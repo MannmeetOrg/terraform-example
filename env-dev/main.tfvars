@@ -14,19 +14,10 @@ vpc = {
 }
 
 ec2 = {
-
-  instance_type = "t3.small"
-  subnet_ref    = "web"
-  allow_port    = ["10.10.0.0/24", "10.10.1.0/24"]
-  allow_sg_cidr = ["0.0.0.0/0"]
-
-
-
-
-
-  #       capacity      = {
-  #         desired = 1
-  #         Max     = 1
-  #         Min     = 1
-  #     }
+  frontend = {
+    instance_type = "t3.small"
+    subnet_ref    = "web"
+    app_port   = 80
+    app_sg_cidr = ["10.10.0.0/24", "10.10.1.0/24" ]
+  }
 }
