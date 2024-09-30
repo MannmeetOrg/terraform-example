@@ -15,9 +15,9 @@ output "db_subnet_ids" {
 }
 output "subnets" {
   value = tomap({
-    "web"    = aws_subnet.web_subnet.*.id
-    "app"    = aws_subnet.app_subnet.*.id
-    "db"     = aws_subnet.db_subnet.*.id
+    "web"    = aws_subnet.web_subnet.*.id,
+    "app"    = aws_subnet.app_subnet.*.id,
+    "db"     = aws_subnet.db_subnet.*.id,
     "public" = aws_subnet.public_subnet.*.id
   })
 }
