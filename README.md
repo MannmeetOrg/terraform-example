@@ -1,2 +1,1 @@
-# terraform-example
-just practice purpose
+# roboshop-terraform
