@@ -13,17 +13,20 @@ vpc = {
   default_vpc_cidr    = "172.31.0.0/16"
 }
 
-apps = {
+ec2 = {
 
-  frontend {
-      instance_type = "t3.small"
-      subnet_ref    = "web"
-      allow_port    = ["10.10.0.0/24", "10.10.1.0/24"]
-      allow_sg_cidr = ["0.0.0.0/0"]
-      capacity      = {
-        desired = 1
-        Max     = 1
-        Min     = 1
-      }
-    }
+  instance_type = "t3.small"
+  subnet_ref    = "web"
+  allow_port    = ["10.10.0.0/24", "10.10.1.0/24"]
+  allow_sg_cidr = ["0.0.0.0/0"]
+
+
+
+
+
+#       capacity      = {
+#         desired = 1
+#         Max     = 1
+#         Min     = 1
+#     }
 }
