@@ -2,16 +2,17 @@ name: Provision Roboshop Infrastructure
 #run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: [workflow_dispatch]
 jobs:
-  Dev:
+  Dev-Apply:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v4
       - name: Terraform init
         run: terraform init -backend-config=env-dev/state.tfvars
       - name: Terraform Apply
-        run: terraform apply -var-file=env-dev/main.tfvars -auto-approve
+        run: terraform apply -var-file=env-dev/main.tfvars -auto-approve -var vault_token=${{ secrets.VAULT_TOKEN }}
+
 #  QA:
-#    needs: dev
+#    needs: dev-apply
 #    runs-on: ubuntu-latest
 #    steps:
 #      - uses: actions/checkout@v4
@@ -27,8 +28,10 @@ jobs:
 #
 #  Prod:
 #    needs: UAT
-#    runs-on: ubuntu-latest
+#    runs-on: self-hosted
 #    steps:
 #      - uses: actions/checkout@v4
-#      - name: Run a one-line script
-#        run: echo Hello, world!
+#      - name: Terraform init
+#        run: terraform init -backend-config=env-dev/state.tfvars
+#      - name: Terraform Apply
+#        run: terraform apply -var-file=env-dev/main.tfvars -auto-approve -var vault_token=${{ secrets.VAULT_TOKEN }}

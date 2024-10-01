@@ -6,4 +6,8 @@ variable "env" {}
 variable "bastion_nodes" {}
 variable "allow_port" {}
 variable "allow_sg_cidr" {}
-variable "capacity" {}
+variable "capacity" {
+  default = {}
+}
+variable "asg" {}
+variable "vault_token" {}
