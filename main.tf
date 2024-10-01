@@ -20,8 +20,8 @@ module "apps" {
   for_each      = var.apps
   name          = each.key
   instance_type = each.value["instance_type"]
-  allow_port    = each.value["app_port"]
-  allow_sg_cidr = each.value["app_sg_cidr"]
+  allow_port    = each.value["allow_port"]
+  allow_sg_cidr = each.value["allow_sg_cidr"]
   subnet_ids    = module.vpc.subnets[each.value["subnet_ref"]]
   capacity      = each.value["capacity"]
   vpc_id        = module.vpc.vpc_id
@@ -37,8 +37,8 @@ module "db" {
   for_each      = var.db
   name          = each.key
   instance_type = each.value["instance_type"]
-  allow_port    = each.value["app_port"]
-  allow_sg_cidr = each.value["app_sg_cidr"]
+  allow_port    = each.value["allow_port"]
+  allow_sg_cidr = each.value["allow_sg_cidr"]
   subnet_ids    = module.vpc.subnets[each.value["subnet_ref"]]
   vpc_id        = module.vpc.vpc_id
   env           = var.env
