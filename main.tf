@@ -22,7 +22,8 @@ module "ec2" {
   instance_type = each.value["instance_type"]
   allow_port    = each.value["app_port"]
   allow_sg_cidr = each.value["app_sg_cidr"]
-  subnet        = module.vpc.subnets["web"][0]
+  subnet_ids    = module.vpc.subnets[each.value["subnet_ref"]]
+  capacity      = each.value["capacity"]
   vpc_id        = module.vpc.vpc_id
   env           = var.env
   bastion_nodes = var.bastion_nodes

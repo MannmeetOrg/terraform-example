@@ -19,5 +19,10 @@ ec2 = {
     subnet_ref    = "web"
     app_port   = 80
     app_sg_cidr = ["10.10.0.0/24", "10.10.1.0/24" ]
+    capacity  = {
+      "desired" = 1
+      "max"     = 1
+      "min"     = 1
+    }
   }
 }
