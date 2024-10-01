@@ -17,7 +17,7 @@ module "vpc" {
 module "apps" {
   source = "./modules/ec2"
 
-  for_each      = var.ec2
+  for_each      = var.apps
   name          = each.key
   instance_type = each.value["instance_type"]
   allow_port    = each.value["app_port"]
