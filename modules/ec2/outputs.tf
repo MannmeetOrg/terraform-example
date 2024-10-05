@@ -9,6 +9,6 @@ output "env" {
 output "vault_token" {
   value = var.vault_token
 }
-output "role_name" {
-  value = var.role_name
-}
+# output "role_name" {
+#   value = var.role_name
+# }
