@@ -11,3 +11,4 @@ variable "capacity" {
 }
 variable "asg" {}
 variable "vault_token" {}
+variable "role_name" {}
