@@ -28,7 +28,7 @@ apps = {
   catalogue = {
     instance_type = "t3.small"
     subnet_ref    = "web"
-    allow_port   = 80
+    allow_port   = 8080
     allow_sg_cidr = ["10.10.4.0/24", "10.10.5.0/24" ]
     capacity  = {
       "desired" = 1
@@ -39,29 +39,7 @@ apps = {
   cart = {
     instance_type = "t3.small"
     subnet_ref    = "web"
-    allow_port   = 80
-    allow_sg_cidr = ["10.10.4.0/24", "10.10.5.0/24" ]
-    capacity  = {
-      "desired" = 1
-      "max"     = 1
-      "min"     = 1
-    }
-  }
-  Shipping = {
-    instance_type = "t3.small"
-    subnet_ref    = "web"
-    allow_port   = 80
-    allow_sg_cidr = ["10.10.4.0/24", "10.10.5.0/24" ]
-    capacity  = {
-      "desired" = 1
-      "max"     = 1
-      "min"     = 1
-    }
-  }
-  payment = {
-    instance_type = "t3.small"
-    subnet_ref    = "web"
-    allow_port   = 80
+    allow_port   = 8080
     allow_sg_cidr = ["10.10.4.0/24", "10.10.5.0/24" ]
     capacity  = {
       "desired" = 1
@@ -72,7 +50,29 @@ apps = {
   user = {
     instance_type = "t3.small"
     subnet_ref    = "web"
-    allow_port   = 80
+    allow_port   = 8080
+    allow_sg_cidr = ["10.10.4.0/24", "10.10.5.0/24" ]
+    capacity  = {
+      "desired" = 1
+      "max"     = 1
+      "min"     = 1
+    }
+  }
+  Shipping = {
+    instance_type = "t3.small"
+    subnet_ref    = "web"
+    allow_port   = 8080
+    allow_sg_cidr = ["10.10.4.0/24", "10.10.5.0/24" ]
+    capacity  = {
+      "desired" = 1
+      "max"     = 1
+      "min"     = 1
+    }
+  }
+  payment = {
+    instance_type = "t3.small"
+    subnet_ref    = "web"
+    allow_port   = 8080
     allow_sg_cidr = ["10.10.4.0/24", "10.10.5.0/24" ]
     capacity  = {
       "desired" = 1
