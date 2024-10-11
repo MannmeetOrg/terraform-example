@@ -62,6 +62,8 @@ resource "aws_autoscaling_group" "main" {
   max_size            = var.capacity["max"]
   min_size            = var.capacity["min"]
   vpc_zone_identifier = var.subnet_ids
+  target_group_arns   = [aws_lb_target_group.main.*.arn[count.index]]
+  load_balancers      = [aws_lb.main.*.arn[count.index]]
 
   launch_template {
     id      = aws_launch_template.main[0].id
@@ -137,5 +139,24 @@ resource "aws_lb" "main" {
 
   tags = {
     Environment = "${var.name}-${var.env}"
+  }
+}
+
+resource "aws_lb_target_group" "main" {
+  count    = var.asg ? 1 : 0
+  name     = "${var.name}-${var.env}"
+  port     = var.allow_port
+  protocol = "HTTP"
+  vpc_id   = var.vpc_id
+}
+
+resource "aws_lb_listener" "front_end" {
+  load_balancer_arn = aws_lb.main.arn
+  port              = "80"
+  protocol          = "HTTP"
+
+  default_action {
+    type             = "forward"
+    target_group_arn = aws_lb_target_group.main.arn
   }
 }
