@@ -127,7 +127,7 @@ resource "aws_security_group" "alb-sg" {
 
 resource "aws_lb" "main" {
   count              = var.asg ? 1 : 0
-  name               = "${var.name}.${var.env}"
+  name               = "${var.name}-${var.env}"
   internal           = true
   load_balancer_type = "application"
   security_groups    = [aws_security_group.alb-sg.id]
@@ -136,6 +136,6 @@ resource "aws_lb" "main" {
   enable_deletion_protection = true
 
   tags = {
-    Environment = "${var.name}.${var.env}"
+    Environment = "${var.name}-${var.env}"
   }
 }
