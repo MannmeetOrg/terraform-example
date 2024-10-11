@@ -1,5 +1,7 @@
 env                   = "dev"
 bastion_nodes         = ["172.31.86.118/32"]
+zone_id               = "Z070326013UBTG0W5AFBE"
+
 
 vpc = {
   cidr                = "10.10.0.0/16"
@@ -27,7 +29,7 @@ apps = {
   }
   catalogue = {
     instance_type = "t3.small"
-    subnet_ref    = "web"
+    subnet_ref    = "app"
     allow_port   = 8080
     allow_sg_cidr = ["10.10.4.0/24", "10.10.5.0/24" ]
     capacity  = {
@@ -38,7 +40,7 @@ apps = {
   }
   cart = {
     instance_type = "t3.small"
-    subnet_ref    = "web"
+    subnet_ref    = "app"
     allow_port   = 8080
     allow_sg_cidr = ["10.10.4.0/24", "10.10.5.0/24" ]
     capacity  = {
@@ -49,7 +51,7 @@ apps = {
   }
   user = {
     instance_type = "t3.small"
-    subnet_ref    = "web"
+    subnet_ref    = "app"
     allow_port   = 8080
     allow_sg_cidr = ["10.10.4.0/24", "10.10.5.0/24" ]
     capacity  = {
@@ -60,7 +62,7 @@ apps = {
   }
   Shipping = {
     instance_type = "t3.small"
-    subnet_ref    = "web"
+    subnet_ref    = "app"
     allow_port   = 8080
     allow_sg_cidr = ["10.10.4.0/24", "10.10.5.0/24" ]
     capacity  = {
@@ -71,7 +73,7 @@ apps = {
   }
   payment = {
     instance_type = "t3.small"
-    subnet_ref    = "web"
+    subnet_ref    = "app"
     allow_port   = 8080
     allow_sg_cidr = ["10.10.4.0/24", "10.10.5.0/24" ]
     capacity  = {
