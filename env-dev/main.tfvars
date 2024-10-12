@@ -17,7 +17,7 @@ vpc = {
 
 apps = {
   frontend = {
-    instance_type = "t3.small"
+    instance_type = "t2.small"
     subnet_ref    = "web"
     allow_port   = 80
     allow_sg_cidr = ["10.10.0.0/24", "10.10.1.0/24" ]
@@ -28,7 +28,7 @@ apps = {
     }
   }
   catalogue = {
-    instance_type = "t3.small"
+    instance_type = "t2.small"
     subnet_ref    = "app"
     allow_port   = 8080
     allow_sg_cidr = ["10.10.4.0/24", "10.10.5.0/24" ]
@@ -39,7 +39,7 @@ apps = {
     }
   }
   cart = {
-    instance_type = "t3.small"
+    instance_type = "t2.small"
     subnet_ref    = "app"
     allow_port   = 8080
     allow_sg_cidr = ["10.10.4.0/24", "10.10.5.0/24" ]
@@ -50,7 +50,7 @@ apps = {
     }
   }
   user = {
-    instance_type = "t3.small"
+    instance_type = "t2.small"
     subnet_ref    = "app"
     allow_port   = 8080
     allow_sg_cidr = ["10.10.4.0/24", "10.10.5.0/24" ]
@@ -61,7 +61,7 @@ apps = {
     }
   }
   shipping = {
-    instance_type = "t3.small"
+    instance_type = "t2.small"
     subnet_ref    = "app"
     allow_port   = 8080
     allow_sg_cidr = ["10.10.4.0/24", "10.10.5.0/24" ]
@@ -72,7 +72,7 @@ apps = {
     }
   }
   payment = {
-    instance_type = "t3.small"
+    instance_type = "t2.small"
     subnet_ref    = "app"
     allow_port   = 8080
     allow_sg_cidr = ["10.10.4.0/24", "10.10.5.0/24" ]
@@ -87,25 +87,25 @@ apps = {
 db = {
   mongo = {
     subnet_ref = "db"
-    instance_type = "t3.small"
+    instance_type = "t2.small"
     allow_port   = 27017
     allow_sg_cidr = ["10.10.4.0/24", "10.10.5.0/24" ]
   }
   mysql = {
     subnet_ref = "db"
-    instance_type = "t3.small"
+    instance_type = "t2.small"
     allow_port   = 3306
     allow_sg_cidr = ["10.10.4.0/24", "10.10.5.0/24" ]
   }
   rabbitmq = {
     subnet_ref = "db"
-    instance_type = "t3.small"
+    instance_type = "t2.small"
     allow_port   = 5672
     allow_sg_cidr = ["10.10.4.0/24", "10.10.5.0/24" ]
   }
   redis = {
     subnet_ref = "db"
-    instance_type = "t3.small"
+    instance_type = "t2.small"
     allow_port   = 6379
     allow_sg_cidr = ["10.10.4.0/24", "10.10.5.0/24" ]
   }
