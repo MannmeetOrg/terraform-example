@@ -60,7 +60,7 @@ apps = {
       "min"     = 1
     }
   }
-  Shipping = {
+  shipping = {
     instance_type = "t3.small"
     subnet_ref    = "app"
     allow_port   = 8080
