@@ -140,13 +140,13 @@ resource "aws_lb" "main" {
   }
 }
 
-resource "aws_lb_target_group" "main" {
-  count    = var.asg ? 1 : 0
-  name     = "${var.name}-${var.env}"
-  port     = var.allow_port
-  protocol = "HTTP"
-  vpc_id   = var.vpc_id
-}
+# resource "aws_lb_target_group" "main" {
+#   count    = var.asg ? 1 : 0
+#   name     = "${var.name}-${var.env}"
+#   port     = var.allow_port
+#   protocol = "HTTP"
+#   vpc_id   = var.vpc_id
+# }
 
 # resource "aws_lb_listener" "front_end" {
 #   count             = var.asg ? 1 : 0
