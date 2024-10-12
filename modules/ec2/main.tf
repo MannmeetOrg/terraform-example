@@ -62,8 +62,8 @@ resource "aws_autoscaling_group" "main" {
   max_size            = var.capacity["max"]
   min_size            = var.capacity["min"]
   vpc_zone_identifier = var.subnet_ids
-  target_group_arns   = [aws_lb_target_group.main.*.arn[count.index]]
-  load_balancers      = [aws_lb.main.*.arn[count.index]]
+  # target_group_arns   = [aws_lb_target_group.main.*.arn[count.index]]
+  # load_balancers      = [aws_lb.main.*.arn[count.index]]
 
   launch_template {
     id      = aws_launch_template.main[0].id
@@ -102,51 +102,51 @@ resource "aws_route53_record" "instance" {
   records = [aws_instance.main.*.private_ip[count.index]]
 }
 
-resource "aws_security_group" "load-balancer" {
-  name        = "${var.name}-${var.env}-alb-sg"
-  description = "${var.name}-${var.env}-alb-sg"
-  vpc_id      = var.vpc_id
+# resource "aws_security_group" "load-balancer" {
+#   name        = "${var.name}-${var.env}-alb-sg"
+#   description = "${var.name}-${var.env}-alb-sg"
+#   vpc_id      = var.vpc_id
+#
+#   egress {
+#     from_port        = 0
+#     to_port          = 0
+#     protocol         = "-1"
+#     cidr_blocks      = ["0.0.0.0/0"]
+#     ipv6_cidr_blocks = ["::/0"]
+#   }
+#
+#   ingress {
+#     from_port        = 80
+#     to_port          = 80
+#     protocol         = "TCP"
+#     cidr_blocks      = var.allow_sg_cidr
+#   }
+#
+#   tags = {
+#     Name = "${var.name}-${var.env}-alb-sg"
+#   }
+# }
 
-  egress {
-    from_port        = 0
-    to_port          = 0
-    protocol         = "-1"
-    cidr_blocks      = ["0.0.0.0/0"]
-    ipv6_cidr_blocks = ["::/0"]
-  }
-
-  ingress {
-    from_port        = 80
-    to_port          = 80
-    protocol         = "TCP"
-    cidr_blocks      = var.allow_sg_cidr
-  }
-
-  tags = {
-    Name = "${var.name}-${var.env}-alb-sg"
-  }
-}
-
-resource "aws_lb" "main" {
-  count              = var.asg ? 1 : 0
-  name               = "${var.name}-${var.env}"
-  internal           = true
-  load_balancer_type = "application"
-  security_groups    = [aws_security_group.load-balancer.*.id[count.index]]
-  subnets            = var.subnet_ids
-
-  tags = {
-    Environment = "${var.name}-${var.env}"
-  }
-}
-
-resource "aws_lb_target_group" "main" {
-  count    = var.asg ? 1 : 0
-  name     = "${var.name}-${var.env}"
-  port     = var.allow_port
-  protocol = "HTTP"
-  vpc_id   = var.vpc_id
-}
+# resource "aws_lb" "main" {
+#   count              = var.asg ? 1 : 0
+#   name               = "${var.name}-${var.env}"
+#   internal           = true
+#   load_balancer_type = "application"
+#   security_groups    = [aws_security_group.load-balancer.*.id[count.index]]
+#   subnets            = var.subnet_ids
+#
+#   tags = {
+#     Environment = "${var.name}-${var.env}"
+#   }
+# }
+#
+# resource "aws_lb_target_group" "main" {
+#   count    = var.asg ? 1 : 0
+#   name     = "${var.name}-${var.env}"
+#   port     = var.allow_port
+#   protocol = "HTTP"
+#   vpc_id   = var.vpc_id
+# }
 
 # resource "aws_lb_listener" "front_end" {
 #   count             = var.asg ? 1 : 0
