@@ -84,6 +84,7 @@ apps = {
   }
 }
 
+# Database Servers
 db = {
   mongo = {
     subnet_ref = "db"
