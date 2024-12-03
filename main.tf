@@ -31,6 +31,8 @@ module "apps" {
   asg           = true
   vault_token   = var.vault_token
   zone_id       = var.zone_id
+  internal      = each.value["lb_internal"]
+  lb_subnet_ids = module.vpc.subnets[each.value["lb_subnet_ref"]]
 }
 
 module "db" {

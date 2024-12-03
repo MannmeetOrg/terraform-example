@@ -26,6 +26,8 @@ apps = {
       "max"     = 1
       "min"     = 1
     }
+    lb_internal = "false"
+    lb_internal_ref = "public"
   }
   catalogue = {
     instance_type = "t2.small"
@@ -37,6 +39,8 @@ apps = {
       "max"     = 1
       "min"     = 1
     }
+    lb_internal = "true"
+    lb_internal_ref = "app"
   }
   cart = {
     instance_type = "t2.small"
