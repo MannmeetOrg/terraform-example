@@ -13,7 +13,9 @@ variable "asg" {}
 variable "vault_token" {}
 # variable "role_name" {}
 variable "zone_id" {}
-variable "internal" {}
+variable "internal" {
+  default = null
+}
 variable "lb_subnet_ids" {
   default = []
 }
