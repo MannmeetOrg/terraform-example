@@ -17,11 +17,12 @@ vpc = {
 
 apps = {
   frontend = {
-    instance_type = "t2.small"
-    subnet_ref    = "web"
-    allow_port   = 80
-    allow_sg_cidr = ["10.10.0.0/24", "10.10.1.0/24" ]
-    capacity  = {
+    instance_type       = "t2.small"
+    subnet_ref          = "web"
+    allow_port          = 80
+    allow_sg_cidr       = ["10.10.0.0/24", "10.10.1.0/24"]
+    allow_lb_sg_cidr    = ["0.0.0.0/0"]
+    capacity            = {
       "desired" = 1
       "max"     = 1
       "min"     = 1
@@ -30,57 +31,58 @@ apps = {
     lb_internal_ref = "public"
   }
   catalogue = {
-    instance_type = "t2.small"
-    subnet_ref    = "app"
-    allow_port   = 8080
-    allow_sg_cidr = ["10.10.4.0/24", "10.10.5.0/24" ]
-    capacity  = {
+    instance_type       = "t2.small"
+    subnet_ref          = "app"
+    allow_port          = 8080
+    allow_sg_cidr       = ["10.10.2.0/24", "10.10.3.0/24" ]
+    allow_lb_sg_cidr    = ["10.10.4.0/24", "10.10.5.0/24" ]
+    capacity            = {
       "desired" = 1
       "max"     = 1
       "min"     = 1
     }
-    lb_internal = "true"
-    lb_internal_ref = "app"
+    lb_internal         = "true"
+    lb_internal_ref     = "app"
   }
   cart = {
-    instance_type = "t2.small"
-    subnet_ref    = "app"
-    allow_port   = 8080
-    allow_sg_cidr = ["10.10.4.0/24", "10.10.5.0/24" ]
-    capacity  = {
+    instance_type       = "t2.small"
+    subnet_ref          = "app"
+    allow_port          = 8080
+    allow_sg_cidr       = ["10.10.4.0/24", "10.10.5.0/24" ]
+    capacity            = {
       "desired" = 1
       "max"     = 1
       "min"     = 1
     }
   }
   user = {
-    instance_type = "t2.small"
-    subnet_ref    = "app"
-    allow_port   = 8080
-    allow_sg_cidr = ["10.10.4.0/24", "10.10.5.0/24" ]
-    capacity  = {
+    instance_type       = "t2.small"
+    subnet_ref          = "app"
+    allow_port          = 8080
+    allow_sg_cidr       = ["10.10.4.0/24", "10.10.5.0/24" ]
+    capacity            = {
       "desired" = 1
       "max"     = 1
       "min"     = 1
     }
   }
   shipping = {
-    instance_type = "t2.small"
-    subnet_ref    = "app"
-    allow_port   = 8080
-    allow_sg_cidr = ["10.10.4.0/24", "10.10.5.0/24" ]
-    capacity  = {
+    instance_type       = "t2.small"
+    subnet_ref          = "app"
+    allow_port          = 8080
+    allow_sg_cidr       = ["10.10.4.0/24", "10.10.5.0/24" ]
+    capacity            = {
       "desired" = 1
       "max"     = 1
       "min"     = 1
     }
   }
   payment = {
-    instance_type = "t2.small"
-    subnet_ref    = "app"
-    allow_port   = 8080
-    allow_sg_cidr = ["10.10.4.0/24", "10.10.5.0/24" ]
-    capacity  = {
+    instance_type       = "t2.small"
+    subnet_ref          = "app"
+    allow_port          = 8080
+    allow_sg_cidr       = ["10.10.4.0/24", "10.10.5.0/24" ]
+    capacity            = {
       "desired" = 1
       "max"     = 1
       "min"     = 1
