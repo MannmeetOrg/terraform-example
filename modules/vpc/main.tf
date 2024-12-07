@@ -1,13 +1,16 @@
 ## VPC
-resource "google_compute_network" "vpc_network" {
-  name = "${var.env}-vpc"
-  cidr_block       = var.cidr
+resource "aws_vpc" "main" {
+  cidr_block = var.cidr
+
+  tags = {
+    Name = "${var.env}-vpc"
+  }
 }
 
 ## SUBNETS
 resource "aws_subnet" "public_subnet" {
   count               = length(var.public_subnets)
-  vpc_id              = gcp.
+  vpc_id              = aws_vpc.main.id
   cidr_block          = var.public_subnets[count.index]
   availability_zone   = var.availability_zones[count.index]
 
