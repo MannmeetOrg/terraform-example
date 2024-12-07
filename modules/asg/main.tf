@@ -135,7 +135,7 @@ resource "aws_lb_target_group" "main" {
 
 resource "aws_lb_listener" "internal-http" {
   count             = var.internal ? 1 : 0
-  load_balancer_arn = aws_lb.main.*.arn[count.index]
+  load_balancer_arn = aws_lb.main.*.arn
   port              = "80"
   protocol          = "HTTP"
 
@@ -146,7 +146,7 @@ resource "aws_lb_listener" "internal-http" {
 }
 resource "aws_lb_listener" "public-http" {
   count             = var.internal ? 0 : 1
-  load_balancer_arn = aws_lb.main.*.arn[count.index]
+  load_balancer_arn = aws_lb.main.arn
   port              = "80"
   protocol          = "HTTPS"
   ssl_policy        = "ELBSecurityPolicy-2016-08"
@@ -157,6 +157,24 @@ resource "aws_lb_listener" "public-http" {
     target_group_arn = aws_lb_target_group.main.*.arn[count.index]
   }
 }
+
+resource "aws_lb_listener" "public-http" {
+  count             = var.internal ? 0 : 1
+  load_balancer_arn = aws_lb.main.arn
+  port              = "80"
+  protocol          = "HTTP"
+
+  default_action {
+    type = "redirect"
+
+    redirect {
+      port        = "443"
+      protocol    = "HTTPS"
+      status_code = "HTTP_301"
+    }
+  }
+}
+
 resource "aws_route53_record" "lb" {
   count   = var.asg ? 1 : 0
   zone_id = var.zone_id
