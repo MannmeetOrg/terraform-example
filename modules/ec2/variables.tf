@@ -6,19 +6,5 @@ variable "env" {}
 variable "bastion_nodes" {}
 variable "allow_port" {}
 variable "allow_sg_cidr" {}
-variable "capacity" {
-  default = []
-}
-variable "asg" {}
 variable "vault_token" {}
-# variable "role_name" {}
 variable "zone_id" {}
-variable "internal" {
-  default = null
-}
-variable "lb_subnet_ids" {
-  default = []
-}
-variable "allow_lb_sg_cidr" {
-  default = []
-}
