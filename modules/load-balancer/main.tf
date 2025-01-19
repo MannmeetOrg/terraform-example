@@ -34,7 +34,7 @@ resource "aws_lb" "main" {
 #  count              = var.asg ? 1 : 0
   name               = "${var.name}-${var.env}"
   internal           = var.internal
-  load_balancer_type = "application"
+  load_balancer_type = var.laod_balancer_type
   security_groups    = [aws_security_group.load-balancer.id]
   subnets            = var.lb_subnet_ids
 
